@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація - SkyBeasts</title>
+    <style>
+        /* Основні стилі */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f8ff;
+        }
+
+        header {
+            background-color: #242c33;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        header img {
+            width: 60px;
+            border: 2px solid white;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Навігаційне меню */
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #14527b;
+            color: #f8f9fa;
+        }
+
+        /* Гамбургер-меню */
+        .mobile-menu-checkbox {
+            display: none;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background-color: #242c33;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu a {
+            color: white;
+            padding: 10px 0;
+            text-decoration: none;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #14527b;
+        }
+
+        /* Форма реєстрації */
+        .registration-form {
+            max-width: 500px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .registration-form h2 {
+            text-align: center;
+            color: #193c5f;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .registration-form label {
+            font-size: 1.1em;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .registration-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .registration-form input:focus {
+            outline: none;
+            border-color: #28a745;
+        }
+
+        .registration-form button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .registration-form button:hover {
+            background-color: #3e7c24;
+        }
+
+        .registration-form .alternative-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .registration-form .alternative-link a {
+            color: #193c5f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .registration-form .alternative-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Медіа-запити для адаптації */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            header img {
+                margin-bottom: 10px;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                gap: 15px;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .mobile-menu-button {
+                display: block;
+                font-size: 30px;
+                padding: 10px;
+                margin-top: 10px;
+            }
+
+            .registration-form {
+                width: 90%;
+                margin-top: 20px;
+            }
+
+            .registration-form h2 {
+                font-size: 1.8em;
+            }
+
+            .registration-form input {
+                font-size: 0.9em;
+            }
+
+            .registration-form button {
+                font-size: 1em;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 14px;
+            }
+
+            .login-button {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="R.webp" alt="Логотип авіакомпанії">
+        
+        <!-- Гамбургер-меню -->
+        <input type="checkbox" id="menu-toggle" class="mobile-menu-checkbox">
+        <label for="menu-toggle" class="mobile-menu-button">☰</label>
+        
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="flight.html">Рейси</a>
+            <a href="about.html">Про нас</a>
+            <a href="contact.html">Контакти</a>
+        </nav>
+
+        <div class="mobile-menu">
+            <a href="index.html">Головна</a>
+            <a href="flight.html">Рейси</a>
+            <a href="about.html">Про нас</a>
+            <a href="contact.html">Контакти</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="registration-form">
+            <h2>Реєстрація</h2>
+            <form action="registration_process.php" method="POST">
+                <label for="username">Ім'я користувача:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Електронна пошта:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="confirm-password">Підтвердження пароля:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+
+                <button type="submit">Зареєструватися</button>
+            </form>
+            <div class="alternative-link">
+                <p>Вже маєте акаунт? <a href="login.html">Увійти</a></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Перевірка для мобільного меню
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        menuToggle.addEventListener('change', () => {
+            mobileMenu.style.display = menuToggle.checked ? 'flex' : 'none';
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти - SkyBeasts</title>
+    <style>
+        /* Основні стилі */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #242c33;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        header img {
+            width: 60px;
+            border: 2px solid white;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #f8f9fa;
+        }
+
+        .login-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #3e7c24;
+        }
+
+        /* Мобільне меню */
+        .mobile-menu-checkbox {
+            display: none;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background-color: #242c33;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            border: 1px solid #f0f0f0;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+
+        .mobile-menu a {
+            color: white;
+            padding: 10px 0;
+            text-decoration: none;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .mobile-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-checkbox:checked + .mobile-menu-button + .mobile-menu {
+            display: flex;
+        }
+
+        main {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        /* Контактна форма */
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .contact-form h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #193c5f;
+        }
+
+        .contact-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #193c5f;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #3e7c24;
+        }
+
+        .contact-details {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-details h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #193c5f;
+        }
+
+        .contact-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .contact-details i {
+            color: #28a745;
+        }
+
+        /* Медіа-запити */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="R.webp" alt="Логотип авіакомпанії">
+        <input type="checkbox" id="menu-toggle" class="mobile-menu-checkbox">
+        <label for="menu-toggle" class="mobile-menu-button">☰</label>
+        <div class="mobile-menu">
+            <a href="index.html">Головна</a>
+            <a href="flight.html">Рейси</a>
+            <a href="about.html">Про нас</a>
+            <a href="#contact">Контакти</a>
+        </div>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="flight.html">Рейси</a>
+            <a href="about.html">Про нас</a>
+            <a href="#contact">Контакти</a>
+        </nav>
+        <button class="login-button" onclick="window.location.href='registration.html';">Вхід</button>
+    </header>
+
+    <main>
+        <section class="contact-form">
+            <h1>Зв'яжіться з нами</h1>
+            <form action="submit_form.php" method="post">
+                <label for="name">Ваше ім'я:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Ваш Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Повідомлення:</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+
+                <button type="submit">Відправити</button>
+            </form>
+        </section>
+
+        <section class="contact-details">
+            <h2>Наші контактні дані</h2>
+            <p><i class="fa fa-map-marker"></i> <strong>Адреса:</strong> Київ, вул. Хрещатик 1, Україна</p>
+            <p><i class="fa fa-phone"></i> <strong>Телефон:</strong> +380 123 456 789</p>
+            <p><i class="fa fa-envelope"></i> <strong>Email:</strong> info@skybeasts.com</p>
+        </section>
+    </main>
+
+</body>
+</html>
+

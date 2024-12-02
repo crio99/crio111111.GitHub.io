@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Про нас - Авіакомпанія SkyBeasts</title>
+    <style>
+        /* Основні стилі */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f8ff;
+        }
+
+        header {
+            background-color: #242c33;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            width: 60px;
+            border: 2px solid white;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Мобільне меню */
+        .mobile-menu-checkbox {
+            display: none;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background-color: #242c33;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            border: 1px solid #f0f0f0;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+
+        .mobile-menu a {
+            color: white;
+            padding: 10px 0;
+            text-decoration: none;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .mobile-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-checkbox:checked + .mobile-menu-button + .mobile-menu {
+            display: flex;
+        }
+
+        /* Центрування навігації */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex: 1;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #f8f9fa;
+        }
+
+        /* Кнопка входу */
+        .login-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #3e7c24;
+        }
+
+        /* Основний контент */
+        main {
+            padding: 20px;
+        }
+
+        /* Банер */
+        .hero-banner {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to right, #102336, #ffffff);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-banner h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .hero-banner p {
+            font-size: 1.2em;
+        }
+
+        /* Про нас */
+        .about-us {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .about-us h2 {
+            font-size: 2em;
+            color: #193c5f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-us p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Медіа-запити */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .hero-banner h1 {
+                font-size: 2em;
+            }
+
+            .hero-banner p {
+                font-size: 1em;
+            }
+
+            .about-us h2 {
+                font-size: 1.5em;
+            }
+
+            .about-us p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="R.webp" alt="Логотип авіакомпанії">
+        <input type="checkbox" id="menu-toggle" class="mobile-menu-checkbox">
+        <label for="menu-toggle" class="mobile-menu-button">☰</label>
+        <div class="mobile-menu">
+            <a href="index.html">Головна</a>
+            <a href="flight.html">Рейси</a>
+            <a href="#about">Про нас</a>
+            <a href="contact.html">Контакти</a>
+        </div>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="flight.html">Рейси</a>
+            <a href="#about">Про нас</a>
+            <a href="contact.html">Контакти</a>
+        </nav>
+        <button class="login-button" onclick="window.location.href='registration.html';">Вхід</button>
+    </header>
+
+    <main class="content-container">
+        <!-- Банер -->
+        <section class="hero-banner">
+            <h1>Про нас</h1>
+            <p>Ми є вашим надійним партнером у світі авіаперельотів!</p>
+        </section>
+
+        <!-- Про нас -->
+        <section class="about-us">
+            <h2>Про авіакомпанію SkyBeasts</h2>
+            <p>Авіакомпанія SkyBeasts була заснована з метою забезпечення безпечних, комфортних і доступних авіаперевезень по всьому світу. Наші авіарейси охоплюють різні напрямки, включаючи популярні міжнародні міста, і ми намагаємося забезпечити високий рівень обслуговування на кожному етапі подорожі.</p>
+            <p>Ми ставимо перед собою мету пропонувати своїм пасажирам не лише дешеві квитки, але й неперевершений комфорт під час польоту. З нами ви можете подорожувати без стресу, знаючи, що ваші потреби будуть враховані на всіх етапах подорожі, від бронювання квитків до посадки в літак.</p>
+            <p>Наші авіарейси здійснюються на новітніх літаках, оснащених усіма необхідними зручностями для комфортного польоту. Ми постійно працюємо над тим, щоб зробити подорожі з нами ще приємнішими та безпечнішими.</p>
+        </section>
+    </main>
+
+</body>
+</html>

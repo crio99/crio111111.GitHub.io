@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авіакомпанія SkyBeasts</title>
+    <style>
+        /* Основні стилі */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f8ff;
+            animation: fade-in 0.8s ease-in-out;
+        }
+        
+
+        header {
+            background-color: #242c33;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        header img {
+            width: 60px;
+        border: 2px solid white; /* Біла обводка */
+        border-radius: 50%; /* Кругла форма (за потреби) */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тінь для акценту */
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #f8f9fa;
+        }
+
+        .login-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #3e7c24;
+        }
+
+        /* Мобільне меню */
+        .mobile-menu-checkbox {
+            display: none;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background-color: #242c33;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            border: 1px solid #f0f0f0;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+
+        .mobile-menu a {
+            color: white;
+            padding: 10px 0;
+            text-decoration: none;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .mobile-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-checkbox:checked + .mobile-menu-button + .mobile-menu {
+            display: flex;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        /* Банер */
+        .hero-banner {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to right, #102336, #ffffff);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-banner h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .hero-banner p {
+            font-size: 1.2em;
+        }
+
+        /* Карточки авіарейсів */
+        .flight-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .flight-card {
+            position: relative;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .flight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .flight-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .flight-card h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #193c5f;
+            font-weight: bold;
+        }
+
+        .flight-card p {
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .flight-card .price {
+            font-size: 1.4em;
+            color: #28a745;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .flight-card button {
+            background-color: #193c5f;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .flight-card button:hover {
+            background-color: #14527b;
+        }
+
+        .flight-card.new::before {
+            content: 'New';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Медіа-запити */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .flight-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .login-button {
+                margin-top: 10px;
+            }
+
+            .hero-banner h1 {
+                font-size: 2em;
+            }
+
+            .hero-banner p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="R.webp" alt="Логотип авіакомпанії">
+        <input type="checkbox" id="menu-toggle" class="mobile-menu-checkbox">
+        <label for="menu-toggle" class="mobile-menu-button">☰</label>
+        <div class="mobile-menu">
+            <a href="#home">Головна</a>
+            <a href="flight.html">Рейси</a>
+            <a href="about.html">Про нас</a>
+            <a href="contact.html">Контакти</a>
+        </div>
+        <nav>
+            <a href="#home">Головна</a>
+            <a href="flight.html">Рейси</a>
+            <a href="about.html">Про нас</a>
+            <a href="contact.html">Контакти</a>
+        </nav>
+        <button class="login-button" onclick="window.location.href='registration.html';">Вхід</button>
+    </header>
+
+    <main class="content-container">
+        <!-- Банер -->
+        <section class="hero-banner">
+            <h1>Ласкаво просимо до SkyBeasts</h1>
+            <p>Ваш надійний партнер для авіаподорожей!</p>
+        </section>
+
+        <section id="flights">
+            <h1>Популярні авіарейси</h1>
+            <div class="flight-cards">
+                <!-- Рейс Київ - Нью-Йорк -->
+                <article class="flight-card new">
+                    <img src="NYC.jpg" alt="Рейс Київ - Нью-Йорк" onerror="this.src='https://via.placeholder.com/400x300?text=New+York';">
+                    <h2>Київ - Нью-Йорк</h2>
+                    <p>Відправлення: 10:00, 25 вересня</p>
+                    <p>Тривалість польоту: 9 годин</p>
+                    <p class="price">Ціна: $500</p>
+                    <button>Забронювати</button>
+                </article>
+        
+                <!-- Рейс Київ - Лондон -->
+                <article class="flight-card new">
+                    <img src="lnd.jpg" alt="Рейс Київ - Лондон" onerror="this.src='https://via.placeholder.com/400x300?text=London';">
+                    <h2>Київ - Лондон</h2>
+                    <p>Відправлення: 15:30, 26 вересня</p>
+                    <p>Тривалість польоту: 3 години</p>
+                    <p class="price">Ціна: $300</p>
+                    <button>Забронювати</button>
+                </article>
+        
+                <!-- Рейс Київ - Париж -->
+                <article class="flight-card">
+                    <img src="par.jfif" alt="Рейс Київ - Париж" onerror="this.src='https://via.placeholder.com/400x300?text=Paris';">
+                    <h2>Київ - Париж</h2>
+                    <p>Відправлення: 18:00, 27 вересня</p>
+                    <p>Тривалість польоту: 4 години</p>
+                    <p class="price">Ціна: $350</p>
+                    <button>Забронювати</button>
+                </article>
+        
+                <!-- Рейс Київ - Берлін -->
+                <article class="flight-card">
+                    <img src="ber.jpg" alt="Рейс Київ - Берлін" onerror="this.src='https://via.placeholder.com/400x300?text=Berlin';">
+                    <h2>Київ - Берлін</h2>
+                    <p>Відправлення: 11:30, 31 вересня</p>
+                    <p>Тривалість польоту: 2 години</p>
+                    <p class="price">Ціна: $150</p>
+                    <button>Забронювати</button>
+                </article>
+        
+                <!-- Новий рейс Київ - Токіо -->
+                <article class="flight-card">
+                    <img src="caption.jpg" alt="Рейс Київ - Токіо" onerror="this.src='https://via.placeholder.com/400x300?text=Tokyo';">
+                    <h2>Київ - Токіо</h2>
+                    <p>Відправлення: 08:00, 30 вересня</p>
+                    <p>Тривалість польоту: 12 годин</p>
+                    <p class="price">Ціна: $700</p>
+                    <button>Забронювати</button>
+                </article>
+        
+                <!-- Новий рейс Київ - Дубай -->
+                <article class="flight-card new">
+                    <img src="images.jpg" alt="Рейс Київ - Дубай" onerror="this.src='https://via.placeholder.com/400x300?text=Dubai';">
+                    <h2>Київ - Дубай</h2>
+                    <p>Відправлення: 13:00, 1 жовтня</p>
+                    <p>Тривалість польоту: 5 годин</p>
+                    <p class="price">Ціна: $450</p>
+                    <button>Забронювати</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html
